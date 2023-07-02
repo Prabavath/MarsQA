@@ -28,7 +28,7 @@ namespace MarsQA.Utilities
             }
        
         }
-        public static void WaitToExist(IWebDriver driver, string locatorType, string locatorValue, int seconds)
+        public static void WaitToBeExist(IWebDriver driver, string locatorType, string locatorValue, int seconds)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
 
@@ -43,6 +43,24 @@ namespace MarsQA.Utilities
             if (locatorType == "CssSelector")
             {
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("locatorValue")));
+            }
+
+        }
+        public static void WaitToBeVisible(IWebDriver driver, string locatorType, string locatorValue, int seconds)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
+
+            if (locatorType == "XPath")
+            {
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("locatorValue")));
+            }
+            if (locatorType == "Id")
+            {
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("locatorValue")));
+            }
+            if (locatorType == "CssSelector")
+            {
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("locatorValue")));
             }
 
         }
