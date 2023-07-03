@@ -17,9 +17,10 @@ Scenario Outline:02-Update the existing language details
 
    Examples: 
    | Language | Level          |
-   | English  | Fluent         |
+   |  Korean  | Fluent         |
+   |  &*NM(94)| Basic          |
    | English  | Basic          |
-   | &*NM(94) | Conversational |
+   | English  | Conversational |
  
    
 
@@ -30,5 +31,5 @@ Scenario Outline:02-Update the existing language details
 
    Examples:
    | Language | Level |
-   |  &*NM(94) |Conversational |
+   | English  |Conversational |
    

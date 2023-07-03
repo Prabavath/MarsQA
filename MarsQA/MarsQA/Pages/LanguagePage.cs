@@ -69,13 +69,12 @@ namespace MarsQA.Pages
 
         public void UpdateLanguage(IWebDriver driver, string language, string level)
         {
-            IWebElement editIcon = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[3]/span[1]/i"));
-            editIcon.Click();
             Thread.Sleep(2000);
+            IWebElement editIcon = driver.FindElement(By.XPath("//td[@class='right aligned']//i[@class='outline write icon']"));
+            editIcon.Click();
             IWebElement getLanguageTextbox = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
             getLanguageTextbox.Clear();
             getLanguageTextbox.SendKeys(language);
-            Thread.Sleep(3000);
             IWebElement getLevelTextbox = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[2]/select"));
             getLevelTextbox.Click();
             getLevelTextbox.SendKeys(level);
@@ -99,7 +98,7 @@ namespace MarsQA.Pages
 
         public void DeleteLanguage(IWebDriver driver, string language, string level)
         {
-
+            Thread.Sleep(2000);
             IWebElement deleteIcon = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
             deleteIcon.Click();                                  
                                                                  
