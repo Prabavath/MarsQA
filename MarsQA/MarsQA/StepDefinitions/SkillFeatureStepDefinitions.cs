@@ -12,44 +12,47 @@ namespace MarsQA.StepDefinitions
     [Binding]
     public class SkillFeatureStepDefinitions : CommonDriver
     {
+        LoginPage loginPageObj;
+        SkillPage skillPageObj;
+
+        public SkillFeatureStepDefinitions()
+        {
+            loginPageObj = new LoginPage();
+            skillPageObj = new SkillPage();
+        }
+        
+
         [Given(@"User has successfully logged into the Mars-QA application")]
         public void GivenUserHasSuccessfullyLoggedIntoTheMars_QAApplication()
-        {
-            driver = new ChromeDriver();
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginSteps(driver);
+        { 
+            loginPageObj.LoginSteps();
 
         }
-
-        [When(@"Add the skill into user profile")]
-        public void WhenAddTheSkillIntoUserProfile()
+        [When(@"Add skill'([^']*)','([^']*)' into user profile")]
+        public void WhenAddSkillIntoUserProfile(string skill, string level)
         {
-            SkillPage skillPageObj = new SkillPage();
-            skillPageObj.AddSkill(driver);
+            skillPageObj.AddSkill(skill,level);
+        }
+        [Then(@"skills should be added '([^']*)','([^']*)' successfully")]
+        public void ThenSkillsShouldBeAddedSuccessfully(string skill, string level)
+        {
+            string newSkill = skillPageObj.GetVerifySkillAdd();
+            string newLevel = skillPageObj.GetVerifySkillLevel();
+            Assert.AreEqual(skill, newSkill, "Actual skill and expected skill do not match");
+            Assert.AreEqual(level, newLevel, "Actual level and expected level do not match");
+        }
+        [When(@"Update skill '([^']*)','([^']*)' on an existing skill details into profile")]
+        public void WhenUpdateSkillOnAnExistingSkillDetailsIntoProfile(string skill, string level)
+        {
+            skillPageObj.UpdateSkill(skill,level);
         }
 
-        [Then(@"skills should be added successfully")]
-        public void ThenSkillsShouldBeAddedSuccessfully()
-        {
-            SkillPage skillPageObj = new SkillPage();
-            string newSkill = skillPageObj.GetVerifySkillAdd(driver);
-            string newLevel = skillPageObj.GetVerifySkillLevel(driver);
-            Assert.AreEqual("Java", newSkill, "Actual skill and expected skill do not match");
-            Assert.AreEqual("Beginner", newLevel, "Actual level and expected level do not match");
-        }
-
-        [When(@"Update '([^']*)','([^']*)' on an existing skill details")]
-        public void WhenUpdateOnAnExistingSkillDetails(string skill, string level)
-        {
-            SkillPage skillPageObj = new SkillPage();
-            skillPageObj.UpdateSkill(driver,skill,level);
-        }
+            
         [Then(@"Skill should been updated '([^']*)','([^']*)'")]
         public void ThenSkillShouldBeenUpdated(string skill, string level)
         {
-            SkillPage skillPageObj = new SkillPage();
-            string updatedSkill = skillPageObj.GetVerifyUpdateSkill(driver);
-            string updatedLevel = skillPageObj.GetVerifyUpdateLevel(driver);
+            string updatedSkill = skillPageObj.GetVerifyUpdateSkill();
+            string updatedLevel = skillPageObj.GetVerifyUpdateLevel();
             Assert.AreEqual(skill, updatedSkill, "Actual skill and expected skill do not match");
             Assert.AreEqual(level, updatedLevel, "Actual level and expected level do not match");
         }
@@ -57,15 +60,17 @@ namespace MarsQA.StepDefinitions
         [When(@"Delete '([^']*)','([^']*)' on an existing skill details")]
         public void WhenDeleteOnAnExistingSkillDetails(string skill, string level)
         {
-            SkillPage skillPageObj = new SkillPage();
-            skillPageObj.DeleteSkill(driver,skill,level);
+           skillPageObj.DeleteSkill(skill,level);
         }
         [Then(@"Skill should be deleted '([^']*)','([^']*)'")]
         public void ThenSkillShouldBeDeleted(string skill, string level)
         {
-            SkillPage skillPageObj = new SkillPage();
-            string deletedSkill = skillPageObj.GetVerifyDeleteSkill(driver);
-            Assert.AreEqual(skill, deletedSkill, "Actual skill and expected skill do not match");
+            string deletedSkill = skillPageObj.GetVerifyDeleteSkill();
+            string deletedLevel = skillPageObj.GetVerifyDeleteLevel();
+            Assert.AreNotEqual(skill, deletedSkill, "Actual skill and expected skill do not match");
+            Assert.AreNotEqual(level, deletedLevel, "Actual level and expected level do not match");
         }
+
+        
     }
 }

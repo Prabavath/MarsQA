@@ -76,10 +76,16 @@ namespace MarsQA.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01- Adding a skill to user profile")]
-        public void _01_AddingASkillToUserProfile()
+        [NUnit.Framework.TestCaseAttribute("Java", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("C#", "Intermediate", null)]
+        [NUnit.Framework.TestCaseAttribute("API", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("SQL", "Expert", null)]
+        public void _01_AddingASkillToUserProfile(string skill, string level, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01- Adding a skill to user profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -95,10 +101,10 @@ this.ScenarioInitialize(scenarioInfo);
 testRunner.Given("User has successfully logged into the Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
-testRunner.When("Add the skill into user profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When(string.Format("Add skill\'{0}\',\'{1}\' into user profile", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
-testRunner.Then("skills should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then(string.Format("skills should be added \'{0}\',\'{1}\' successfully", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -106,10 +112,10 @@ testRunner.Then("skills should be added successfully", ((string)(null)), ((TechT
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("02- Update the existing skill details")]
-        [NUnit.Framework.TestCaseAttribute("C#", "Intermediate", null)]
+        [NUnit.Framework.TestCaseAttribute("C#", "Expert", null)]
         [NUnit.Framework.TestCaseAttribute("v11@a", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("API", "Expert", null)]
-        [NUnit.Framework.TestCaseAttribute("API", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("Phython", "Expert", null)]
+        [NUnit.Framework.TestCaseAttribute("SQL", "Beginner", null)]
         public void _02_UpdateTheExistingSkillDetails(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -117,7 +123,7 @@ testRunner.Then("skills should be added successfully", ((string)(null)), ((TechT
             argumentsOfScenario.Add("Skill", skill);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02- Update the existing skill details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -127,13 +133,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 21
 testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
-testRunner.When(string.Format("Update \'{0}\',\'{1}\' on an existing skill details", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+testRunner.When(string.Format("Update skill \'{0}\',\'{1}\' on an existing skill details into profile", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 23
 testRunner.Then(string.Format("Skill should been updated \'{0}\',\'{1}\'", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -142,7 +148,7 @@ testRunner.Then(string.Format("Skill should been updated \'{0}\',\'{1}\'", skill
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("03- Delete the existing skill details")]
-        [NUnit.Framework.TestCaseAttribute("API", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("SQL", "Beginner", null)]
         public void _03_DeleteTheExistingSkillDetails(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -150,7 +156,7 @@ testRunner.Then(string.Format("Skill should been updated \'{0}\',\'{1}\'", skill
             argumentsOfScenario.Add("Skill", skill);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03- Delete the existing skill details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 25
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -160,13 +166,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 26
+#line 33
 testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 34
 testRunner.When(string.Format("Delete \'{0}\',\'{1}\' on an existing skill details", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 35
 testRunner.Then(string.Format("Skill should be deleted \'{0}\',\'{1}\'", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

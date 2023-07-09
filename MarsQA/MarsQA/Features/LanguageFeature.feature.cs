@@ -77,10 +77,16 @@ namespace MarsQA.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01- Adding a language to user profile")]
-        public void _01_AddingALanguageToUserProfile()
+        [NUnit.Framework.TestCaseAttribute("Tamil", "Fluent", null)]
+        [NUnit.Framework.TestCaseAttribute("S@#112", "Basic", null)]
+        [NUnit.Framework.TestCaseAttribute("Kanada", "Conversational", null)]
+        [NUnit.Framework.TestCaseAttribute("Telugu", "Basic", null)]
+        public void _01_AddingALanguageToUserProfile(string language, string level, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Language", language);
+            argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01- Adding a language to user profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -96,10 +102,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.When("Add the language into user profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("Add language\'{0}\',\'{1}\' into user profile", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("Languages should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("Languages should be added \'{0}\',\'{1}\' successfully", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -109,8 +115,8 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("02-Update the existing language details")]
         [NUnit.Framework.TestCaseAttribute("Korean", "Fluent", null)]
         [NUnit.Framework.TestCaseAttribute("&*NM(94)", "Basic", null)]
-        [NUnit.Framework.TestCaseAttribute("English", "Basic", null)]
         [NUnit.Framework.TestCaseAttribute("English", "Conversational", null)]
+        [NUnit.Framework.TestCaseAttribute("Spanish", "Fluent", null)]
         public void _02_UpdateTheExistingLanguageDetails(string language, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -118,7 +124,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Language", language);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02-Update the existing language details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -128,13 +134,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 22
    testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 23
    testRunner.When(string.Format("Update \'{0}\',\'{1}\' on an existing language details", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 24
    testRunner.Then(string.Format("Language should been updated \'{0}\',\'{1}\'", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -143,7 +149,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("03- Delete the existing language details")]
-        [NUnit.Framework.TestCaseAttribute("English", "Conversational", null)]
+        [NUnit.Framework.TestCaseAttribute("Spanish", "Fluent", null)]
         public void _03_DeleteTheExistingLanguageDetails(string language, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -151,7 +157,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Language", language);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03- Delete the existing language details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
+#line 33
    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -161,13 +167,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 28
+#line 34
    testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 29
+#line 35
    testRunner.When(string.Format("Delete \'{0}\',\'{1}\' on an existing details", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 36
    testRunner.Then(string.Format("Language should be deleted \'{0}\',\'{1}\'", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
