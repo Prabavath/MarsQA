@@ -20,8 +20,6 @@ namespace MarsQA.StepDefinitions
             loginPageObj = new LoginPage();
             skillPageObj = new SkillPage();
         }
-        
-
         [Given(@"User has successfully logged into the Mars-QA application")]
         public void GivenUserHasSuccessfullyLoggedIntoTheMars_QAApplication()
         { 

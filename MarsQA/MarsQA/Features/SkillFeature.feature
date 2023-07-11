@@ -36,5 +36,5 @@ Then Skill should be deleted '<Skill>','<Level>'
 
 Examples: 
 | Skill | Level    |
-| SQL   | Beginner  |
+| SQL   | Beginner |
 

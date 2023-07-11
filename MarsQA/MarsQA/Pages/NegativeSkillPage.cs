@@ -1,7 +1,6 @@
 ﻿using MarsQA.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MarsQA.Pages
 {
-    public class SkillPage : CommonDriver
+    public class NegativeSkillPage : CommonDriver
     {
         //Identify inputtextbox and button
         private static IWebElement skillTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
@@ -24,22 +23,35 @@ namespace MarsQA.Pages
         private static IWebElement skillTextbox => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
         private static IWebElement levelTextbox => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[2]/select"));
         private static IWebElement updateButton => driver.FindElement(By.XPath("//input[@value='Update']"));
-        private static IWebElement updatedSkill => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
-        private static IWebElement updatedLevel => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
-        private static IWebElement deletedSkill => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
-        private static IWebElement deletedLevel => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
+        private static IWebElement updatedSkill => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
+        private static IWebElement updatedLevel => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[2]"));
+      
 
-        public void AddSkill(string skill,string level)
+        public void AddSkill(string skill, string level)
         {
             //Get input and click butoon
             Thread.Sleep(2000);
             skillTab.Click();
-            addnewButton.Click();                                   
+            addnewButton.Click();
             addSkillTextbox.SendKeys(skill);
             skillLevelOption.SendKeys(level);
             addButton.Click();
-                       
+            Thread.Sleep(2000);
+            IWebElement messageBox = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+            Thread.Sleep(2000);
+            //get the text of the message element
+            string actualMessage = messageBox.Text;
+            Console.WriteLine(actualMessage);
+
+            //Verify the expected message text
+            string expectedMessage1 = skill + " has been added to your skills";
+            string expectedMessage2 = "Please enter skill and experience level";
+            string expectedMessage3 = "This skill is already exist in your skill list.";
+           
+            Assert.That(actualMessage, Is.EqualTo(expectedMessage1).Or.EqualTo(expectedMessage2).Or.EqualTo(expectedMessage3));
+
         }
+    
 
         public string GetVerifySkillAdd()
         {
@@ -52,7 +64,7 @@ namespace MarsQA.Pages
             return newSkillLevel.Text;
         }
 
-        public void UpdateSkill(string skill,string level)
+        public void UpdateSkill(string skill, string level)
         {
             //Get input and click button
             Thread.Sleep(2000);
@@ -63,8 +75,22 @@ namespace MarsQA.Pages
             levelTextbox.Click();
             levelTextbox.SendKeys(level);
             updateButton.Click();
+            Thread.Sleep(2000);
+            IWebElement messageBox = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+            Thread.Sleep(2000);
+            //get the text of the message element
+            string actualMessage = messageBox.Text;
+            Console.WriteLine(actualMessage);
+
+            //Verify the expected message text
+            string expectedMessage4 = skill + " has been updated to your skills";
+            string expectedMessage5 = "Please enter skill and experience level";
+            string expectedMessage6 = "This skill is already exist in your skill list.";
+
+            Assert.That(actualMessage, Is.EqualTo(expectedMessage4).Or.EqualTo(expectedMessage5).Or.EqualTo(expectedMessage6));
+
         }
-    
+
         public string GetVerifyUpdateSkill()
         {
             Thread.Sleep(2000);
@@ -76,25 +102,5 @@ namespace MarsQA.Pages
             return updatedLevel.Text;
         }
 
-        public void DeleteSkill(string skill, string level)
-        {
-             Thread.Sleep(2000);
-             skillTab.Click();
-             var skillDeleteIcon = driver.FindElement(By.XPath($"//tbody[tr[td[text()='{skill}'] and td[text()='{level}']]]//i[@class='remove icon']"));
-             // Find and click the delete icon in the row
-             skillDeleteIcon.Click();
-             Thread.Sleep(2000);
-        }
-        public string GetVerifyDeleteSkill()
-        {
-          Thread.Sleep(3000);
-          return deletedSkill.Text;
-        }
-        public string GetVerifyDeleteLevel()
-        {
-            Thread.Sleep(2000);
-            return deletedLevel.Text;
-        }
     }
-    
 }
