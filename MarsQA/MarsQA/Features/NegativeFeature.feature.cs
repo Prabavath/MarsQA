@@ -78,7 +78,8 @@ namespace MarsQA.Features
         [NUnit.Framework.DescriptionAttribute("01- Adding a invalidlanguage to user profile")]
         [NUnit.Framework.TestCaseAttribute("Tamil", "", null)]
         [NUnit.Framework.TestCaseAttribute("Telugu", "Basic", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Choose Language Level", null)]
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Choose Language Level", null)]
         public void _01_AddingAInvalidlanguageToUserProfile(string language, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -113,7 +114,8 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("02- Update the invalidlanguage to user profile")]
         [NUnit.Framework.TestCaseAttribute("", "Basic", null)]
         [NUnit.Framework.TestCaseAttribute("Telugu", "Basic", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Language Level", null)]
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Language Level", null)]
         public void _02_UpdateTheInvalidlanguageToUserProfile(string language, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -121,7 +123,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Language", language);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02- Update the invalidlanguage to user profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
+#line 20
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -131,13 +133,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 20
+#line 21
    testRunner.Given("User has successfully logged into Mars-QA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 22
    testRunner.When(string.Format("Update invalid language \'{0}\',\'{1}\' into user profile", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 23
    testRunner.Then(string.Format("Invalid language should not be updated \'{0}\',\'{1}\'", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -146,9 +148,9 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("03- Adding a invalidskill to user profile")]
-        [NUnit.Framework.TestCaseAttribute("C#", "", null)]
+        [NUnit.Framework.TestCaseAttribute("C#", "Choose Skill Level", null)]
         [NUnit.Framework.TestCaseAttribute("API", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Choose Skill Level", null)]
         public void _03_AddingAInvalidskillToUserProfile(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -156,7 +158,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Skill", skill);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03- Adding a invalidskill to user profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 30
+#line 32
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -166,13 +168,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 31
+#line 33
     testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 32
+#line 34
     testRunner.When(string.Format("Add invalid skill \'{0}\',\'{1}\' into user profile", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 33
+#line 35
     testRunner.Then(string.Format("Invalid skill should not be added \'{0}\',\'{1}\'", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -182,7 +184,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("04- Update the invalidskill to user profile")]
         [NUnit.Framework.TestCaseAttribute("C#", "Expert", null)]
-        [NUnit.Framework.TestCaseAttribute("Python", "", null)]
+        [NUnit.Framework.TestCaseAttribute("Python", "Skill Level", null)]
         [NUnit.Framework.TestCaseAttribute("", "Skill Level", null)]
         public void _04_UpdateTheInvalidskillToUserProfile(string skill, string level, string[] exampleTags)
         {
@@ -191,7 +193,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Skill", skill);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04- Update the invalidskill to user profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 41
+#line 44
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -201,13 +203,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 42
+#line 45
    testRunner.Given("User has successfully logged into Mars-QA application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 43
+#line 46
    testRunner.When(string.Format("Update invalid skill \'{0}\',\'{1}\' into user profile", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 44
+#line 47
     testRunner.Then(string.Format("Invalid skill should not be updated \'{0}\',\'{1}\'", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

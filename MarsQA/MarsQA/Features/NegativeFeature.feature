@@ -11,10 +11,11 @@ Scenario:01- Adding a invalidlanguage to user profile
 	Then Invalid language should not be added '<Language>','<Level>' 
 
 	Examples: 
-	| Language | Level |
-	| Tamil    |       |
-	| Telugu   | Basic |
-	|          |       |
+	| Language | Level                 |
+	| Tamil    |                       |
+	| Telugu   | Basic                 |
+	|          | Choose Language Level |
+	| Hindi    | Choose Language Level |
 	
 	Scenario Outline:02- Update the invalidlanguage to user profile
 	  Given User has successfully logged into Mars-QA 
@@ -22,10 +23,11 @@ Scenario:01- Adding a invalidlanguage to user profile
 	  Then Invalid language should not be updated '<Language>','<Level>'
 	  
 	  Examples: 
-	  | Language | Level |
-	  |          | Basic |
-	  | Telugu   | Basic |
-	  |          |       |
+	  | Language | Level                 |
+	  |          | Basic                 |
+	  | Telugu   | Basic                 |
+	  |          |Language Level         |
+	  | Hindi    |Language Level         |
 
 	 Scenario Outline:03- Adding a invalidskill to user profile
 	   Given User has successfully logged into Mars-QA application
@@ -33,10 +35,11 @@ Scenario:01- Adding a invalidlanguage to user profile
 	   Then Invalid skill should not be added '<Skill>','<Level>'
 
 	 Examples: 
-	 | Skill | Level    |
-	 | C#    |          |
-	 | API   | Beginner |
-	 |       |          |
+	 | Skill | Level              |
+	 | C#    | Choose Skill Level |
+	 | API   | Beginner           |
+	 |       | Choose Skill Level |
+	 
 
 	 Scenario Outline:04- Update the invalidskill to user profile
 	  Given User has successfully logged into Mars-QA application
@@ -46,7 +49,7 @@ Scenario:01- Adding a invalidlanguage to user profile
 	 Examples: 
 	 | Skill  | Level              |
 	 | C#     | Expert             |
-	 | Python |                    |
+	 | Python |  Skill Level       |
 	 |        |  Skill Level       |
 	
 
